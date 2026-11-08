@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { sortJourney, formatRange } from '../../src/lib/journey';
+import { sortJourney, formatRange, formatMonth } from '../../src/lib/journey';
+
+describe('formatMonth', () => {
+  it('formats a single point in time', () => {
+    expect(formatMonth(new Date('2024-04'))).toBe('Apr 2024');
+  });
+});
 
 const j = (id: string, start: string) => ({ id, data: { start: new Date(start) } });
 

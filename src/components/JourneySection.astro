@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import { sortJourney } from '../lib/journey';
+import SectionHeading from './SectionHeading.astro';
+import JourneyItem from './JourneyItem.astro';
+
+const entries = sortJourney(await getCollection('journey'));
+---
+
+{
+  entries.length > 0 && (
+    <section id="journey" aria-labelledby="journey-title" class="border-t border-zinc-900 py-20 md:py-28">
+      <div class="container-page">
+        <SectionHeading index="03" label="Journey" title="Learning & building so far" id="journey-title" />
+        <div data-timeline class="relative pl-7">
+          <span aria-hidden="true" class="timeline-line absolute top-2 bottom-2 left-[5px] w-px" />
+          <ol class="relative">
+            {entries.map((entry, i) => (
+              <JourneyItem entry={entry} latest={i === 0} />
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<script>
+  import { initTimeline } from '../scripts/timeline';
+  document.addEventListener('astro:page-load', initTimeline);
+</script>

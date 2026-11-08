@@ -5,7 +5,12 @@ export function sortJourney<T extends { data: { start: Date } }>(items: T[]): T[
 
 const monthYear = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 
+/** "Apr 2024" — for single moments such as milestones. */
+export function formatMonth(date: Date): string {
+  return monthYear.format(date);
+}
+
 /** "Jun 2024 — Present" or "Aug 2022 — May 2026". */
 export function formatRange(start: Date, end?: Date): string {
-  return `${monthYear.format(start)} — ${end ? monthYear.format(end) : 'Present'}`;
+  return `${formatMonth(start)} — ${end ? formatMonth(end) : 'Present'}`;
 }

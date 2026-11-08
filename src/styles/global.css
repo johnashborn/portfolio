@@ -102,6 +102,22 @@
   outline-offset: 3px;
 }
 
+/* Journey timeline: a faint track plus a bright line drawn to --progress (1 without JS). */
+[data-timeline] {
+  --progress: 1;
+}
+.timeline-line {
+  background: var(--line);
+}
+.timeline-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #e4e4e7, #52525b);
+  transform-origin: top;
+  transform: scaleY(var(--progress));
+}
+
 @utility container-page {
   @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12;
 }

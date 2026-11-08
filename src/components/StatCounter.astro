@@ -1,0 +1,26 @@
+---
+import { parseStat } from '../lib/achievements';
+
+interface Props {
+  value: string;
+  label: string;
+}
+const { value, label } = Astro.props;
+const parsed = parseStat(value);
+---
+
+<div data-stat aria-label={`${value} ${label}`} role="group" class="p-5 md:p-6">
+  <p
+    aria-hidden="true"
+    class="text-3xl font-extrabold tracking-[-0.04em] text-text-1 tabular-nums md:text-4xl"
+  >
+    <span
+      data-count-target
+      data-count={parsed?.num}
+      data-prefix={parsed?.prefix}
+      data-suffix={parsed?.suffix}
+      data-final={value}>{value}</span
+    >
+  </p>
+  <p aria-hidden="true" class="mt-1 text-[13px] text-text-2">{label}</p>
+</div>
