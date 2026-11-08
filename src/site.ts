@@ -28,7 +28,7 @@ export const site: SiteConfig = {
   graduationYear: '20XX', // TODO
   location: 'City, Country', // TODO
   // TODO: 2–3 honest sentences in your own voice — what you build, what you're learning, what you want next.
-  bio: "I'm an Information Technology student who builds full-stack web apps — from database tables and APIs to the interface people actually click. I learn by shipping small, real projects, and I'm looking for an internship or junior role where I can keep growing with a good team.",
+  bio: "I build full-stack web apps — from database tables and APIs to the interface people actually click. I learn by shipping small, real projects, and I'm looking for an internship or junior role where I can keep growing with a good team.",
   email: 'you@example.com', // TODO
   socials: {
     github: 'https://github.com/your-username', // TODO

@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets';
+import { site } from '../site';
+import StackRow from './StackRow.astro';
+
+const split = !!site.photo;
+---
+
+<section
+  id="me"
+  aria-label="About me"
+  data-layout={split ? 'split' : 'single'}
+  class="hero-glow relative -mt-16 overflow-hidden"
+>
+  <div class="container-page relative z-10 pt-28 pb-16 md:pt-36 md:pb-20">
+    <div class:list={[split ? 'grid items-center gap-12 md:grid-cols-[1.5fr_1fr] md:gap-16' : 'mx-auto max-w-3xl text-center']}>
+      <div>
+        <p
+          class="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs text-zinc-300"
+          data-reveal
+        >
+          <span class="size-1.5 rounded-full bg-white shadow-[0_0_8px_#fff]" aria-hidden="true"></span>
+          <span data-status>{site.status}</span>
+        </p>
+
+        <h1 class="mt-6 text-[2.35rem] leading-[1.04] font-extrabold tracking-[-0.04em] sm:text-5xl md:text-[3.5rem]" data-reveal>
+          {site.name}.
+          <span class="block text-zinc-500">{site.role}.</span>
+        </h1>
+
+        <p class="mt-5 font-mono text-xs tracking-wide text-text-3 uppercase" data-reveal>
+          <span class="text-text-1">{site.studentLine}</span> · {site.location}
+        </p>
+
+        <p class:list={['mt-4 text-[15px] leading-relaxed text-text-2 md:text-base', !split && 'mx-auto max-w-xl']} data-reveal>
+          {site.bio}
+        </p>
+
+        <div class:list={['mt-8 flex flex-wrap gap-3 text-sm', !split && 'justify-center']} data-reveal>
+          <a
+            href="#projects"
+            class="group inline-flex items-center gap-2 rounded-lg bg-text-1 px-4 py-2.5 font-semibold text-bg transition-transform hover:-translate-y-px"
+          >
+            View projects <span aria-hidden="true" class="transition-transform group-hover:translate-y-0.5">↓</span>
+          </a>
+          <a
+            href={site.cvPath}
+            download
+            class="inline-flex items-center rounded-lg border border-line px-4 py-2.5 text-text-1 transition-colors hover:border-zinc-500"
+          >
+            Download CV
+          </a>
+          <a
+            href={site.socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 rounded-lg border border-line px-4 py-2.5 text-text-1 transition-colors hover:border-zinc-500"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      {
+        site.photo && (
+          <div class="relative" data-reveal>
+            <Image
+              src={site.photo}
+              alt={`Photo of ${site.name}`}
+              widths={[400, 640, 800]}
+              sizes="(min-width: 768px) 38vw, 90vw"
+              loading="eager"
+              fetchpriority="high"
+              class="aspect-[4/5] w-full rounded-2xl border border-line object-cover"
+            />
+            <span class="absolute bottom-3 left-3 rounded-md border border-line bg-bg/80 px-2.5 py-1 text-xs text-text-2 backdrop-blur">
+              {site.location}
+            </span>
+          </div>
+        )
+      }
+    </div>
+
+    <StackRow items={site.stack} centered={!split} />
+  </div>
+</section>

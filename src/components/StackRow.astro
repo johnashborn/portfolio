@@ -1,0 +1,29 @@
+---
+interface Props {
+  items: { name: string; icon: string }[];
+  centered?: boolean;
+}
+const { items, centered = false } = Astro.props;
+---
+
+<div
+  class:list={[
+    'mt-14 flex flex-col gap-4 border-t border-zinc-900 pt-6 sm:flex-row sm:items-center sm:gap-7',
+    centered && 'sm:justify-center',
+  ]}
+  data-reveal
+>
+  <p class="label-mono shrink-0">Stack</p>
+  <ul data-stack class:list={['flex flex-wrap gap-x-6 gap-y-3', centered && 'sm:justify-center']}>
+    {
+      items.map((item) => (
+        <li class="flex items-center gap-2 text-[13px] font-medium text-text-2">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" class="text-text-3">
+            <path d={item.icon} />
+          </svg>
+          {item.name}
+        </li>
+      ))
+    }
+  </ul>
+</div>
