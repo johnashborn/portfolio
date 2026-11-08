@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../site';
 ---
 
-<BaseLayout title="Portfolio" description="Developer portfolio">
+<BaseLayout title={site.seo.title} description={site.seo.description}>
   <main id="main"></main>
 </BaseLayout>

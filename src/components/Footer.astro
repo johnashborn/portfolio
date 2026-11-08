@@ -1,0 +1,12 @@
+---
+import { site } from '../site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-zinc-900">
+  <div class="container-page flex flex-col gap-3 py-6 text-xs text-text-3 sm:flex-row sm:items-center sm:justify-between">
+    <span>© {year} {site.name}</span>
+    <span class="font-mono">Built with Astro · Hosted on Netlify</span>
+    <a href="#main" class="hover:text-text-1">Back to top <span aria-hidden="true">↑</span></a>
+  </div>
+</footer>

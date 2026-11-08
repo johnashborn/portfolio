@@ -1,0 +1,72 @@
+---
+import { getEntry } from 'astro:content';
+import { site } from '../site';
+import { hasAchievements } from '../lib/achievements';
+
+const achievements = await getEntry('achievements', 'main');
+const showAchievements = !!achievements && hasAchievements(achievements.data);
+
+const links = [
+  { href: '/#projects', label: 'Projects' },
+  ...(showAchievements ? [{ href: '/#achievements', label: 'Achievements' }] : []),
+  { href: '/#journey', label: 'Journey' },
+  { href: '/#contact', label: 'Contact' },
+];
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-50 border-b border-transparent transition-[background-color,border-color] duration-300 data-[scrolled]:border-line data-[scrolled]:bg-bg/75 data-[scrolled]:backdrop-blur-md"
+>
+  <nav aria-label="Main" class="container-page flex h-16 items-center justify-between">
+    <a href="/" class="font-mono text-sm text-text-1 hover:text-white">{site.name.toLowerCase().replace(/\s+/g, '')}</a>
+
+    <div class="hidden items-center gap-7 text-sm md:flex">
+      {links.map((l) => <a href={l.href} class="text-text-2 transition-colors hover:text-text-1">{l.label}</a>)}
+      <a
+        href={site.cvPath}
+        download
+        class="rounded-lg border border-line px-3 py-1.5 text-text-1 transition-colors hover:border-zinc-500"
+      >
+        CV <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+
+    <button
+      id="menu-button"
+      type="button"
+      class="-mr-2 inline-flex size-11 items-center justify-center rounded-lg text-text-1 md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="sr-only">Menu</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="menu-icon">
+        <path d="M3 6h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    hidden
+    class="border-t border-line bg-bg/95 backdrop-blur-md md:hidden"
+  >
+    <nav aria-label="Mobile" class="container-page flex flex-col py-4">
+      {
+        links.map((l) => (
+          <a href={l.href} class="border-b border-line/60 py-3.5 text-lg text-text-1">
+            {l.label}
+          </a>
+        ))
+      }
+      <a href={site.cvPath} download class="mt-4 rounded-lg bg-text-1 py-3 text-center font-semibold text-bg">
+        Download CV
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import { initNav } from '../scripts/nav';
+  document.addEventListener('astro:page-load', initNav);
+</script>

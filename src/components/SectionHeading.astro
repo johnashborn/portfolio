@@ -1,0 +1,18 @@
+---
+interface Props {
+  /** e.g. "01" */
+  index: string;
+  /** e.g. "Selected work" */
+  label: string;
+  /** Visible h2 text, e.g. "Projects" */
+  title: string;
+  /** id for the h2; sections reference it with aria-labelledby. */
+  id: string;
+}
+const { index, label, title, id } = Astro.props;
+---
+
+<div class="mb-8 md:mb-10" data-reveal>
+  <p class="label-mono">{index} / {label}</p>
+  <h2 id={id} class="mt-2 text-[1.75rem] font-extrabold tracking-[-0.03em] md:text-[2rem]">{title}</h2>
+</div>
