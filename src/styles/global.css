@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* Design tokens — spec §3. Monochrome only: no hued accents or gradients. */
+:root {
+  --bg: #09090b;
+  --surface-1: #111113;
+  --line: #27272a;
+  --text-1: #f4f4f5;
+  --text-2: #a1a1aa;
+  --text-3: #8b8b94;
+  --glow: rgb(255 255 255 / 0.11);
+  color-scheme: dark;
+}
+
+@theme {
+  --color-bg: #09090b;
+  --color-surface-1: #111113;
+  --color-line: #27272a;
+  --color-text-1: #f4f4f5;
+  --color-text-2: #a1a1aa;
+  --color-text-3: #8b8b94;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-bg text-text-2 font-sans antialiased;
+    min-height: 100dvh;
+  }
+  h1, h2, h3, h4 {
+    @apply text-text-1;
+  }
+  :focus-visible {
+    outline: 2px solid var(--text-1);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--text-1);
+    color: var(--bg);
+  }
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@utility label-mono {
+  @apply font-mono text-[11px] uppercase tracking-[0.08em] text-text-3;
+}
