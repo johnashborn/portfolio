@@ -1,0 +1,11 @@
+Runtime error encountered: No Chrome installations found.
+Error
+    at new LauncherError (file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/chrome-launcher/dist/utils.js:28:22)
+    at new ChromeNotInstalledError (file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/chrome-launcher/dist/utils.js:55:9)
+    at Launcher.launch (file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/chrome-launcher/dist/chrome-launcher.js:226:23)
+    at Module.launch (file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/chrome-launcher/dist/chrome-launcher.js:49:20)
+    at getDebuggableChrome (file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/lighthouse/cli/run.js:85:25)
+    at runLighthouse (file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/lighthouse/cli/run.js:204:30)
+    at begin (file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/lighthouse/cli/bin.js:129:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async file:///C:/Users/arant/AppData/Local/npm-cache/_npx/8003d8991b0d346b/node_modules/lighthouse/cli/index.js:10:1

@@ -56,6 +56,20 @@ test('rejects an invalid email without sending', async ({ page }) => {
   expect(posted).toBe(false);
 });
 
+test('form fields show the same visible focus ring as everything else', async ({ page }) => {
+  await page.goto('/#contact');
+  for (const label of ['Name', 'Email', 'Message']) {
+    const field = page.getByLabel(label);
+    await field.focus();
+    const outline = await field.evaluate((el) => {
+      const s = getComputedStyle(el);
+      return { style: s.outlineStyle, width: parseFloat(s.outlineWidth) };
+    });
+    expect(outline.style).not.toBe('none');
+    expect(outline.width).toBeGreaterThanOrEqual(2);
+  }
+});
+
 test('copy email button copies the address @copy', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('/#contact');
