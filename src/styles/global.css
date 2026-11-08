@@ -77,6 +77,31 @@
   pointer-events: none;
 }
 
+/* Project cards: pointer-follow glow + whole-card click target. */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(260px circle at var(--x, 50%) var(--y, 0%), rgb(255 255 255 / 0.08), transparent 65%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+.project-card:hover::before {
+  opacity: 1;
+}
+.card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.project-card:has(.card-link:focus-visible) {
+  outline: 2px solid var(--text-1);
+  outline-offset: 3px;
+}
+
 @utility container-page {
   @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12;
 }

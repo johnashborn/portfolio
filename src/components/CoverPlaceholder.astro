@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  class?: string;
+}
+const { title, class: className } = Astro.props;
+---
+
+<div
+  data-cover-placeholder
+  class:list={[
+    'relative flex items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_30%_0%,rgb(255_255_255/0.08),transparent_60%),linear-gradient(135deg,#18181b,#232327)] p-6',
+    className,
+  ]}
+  aria-hidden="true"
+>
+  <span class="line-clamp-2 text-center font-mono text-sm text-text-3">{title}</span>
+</div>

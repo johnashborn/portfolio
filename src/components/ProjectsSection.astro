@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { orderProjects, splitFeatured } from '../lib/projects';
+import SectionHeading from './SectionHeading.astro';
+import ProjectCard from './ProjectCard.astro';
+
+const ordered = orderProjects(await getCollection('projects'), { includeDrafts: import.meta.env.DEV });
+const { featured, rest } = splitFeatured(ordered);
+---
+
+<section id="projects" aria-labelledby="projects-title" class="border-t border-zinc-900 py-20 md:py-28">
+  <div class="container-page">
+    <SectionHeading index="01" label="Selected work" title="Projects" id="projects-title" />
+    {
+      featured && (
+        <div class="grid gap-4 md:grid-cols-2 md:gap-5">
+          <ProjectCard project={featured} size="large" />
+          {rest.map((project) => <ProjectCard project={project} size="normal" />)}
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<script>
+  import { initGlow } from '../scripts/glow';
+  document.addEventListener('astro:page-load', initGlow);
+</script>

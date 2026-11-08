@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import CoverPlaceholder from './CoverPlaceholder.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  size: 'large' | 'normal';
+}
+
+const { project, size } = Astro.props;
+const { title, summary, cover, coverAlt, stack, featured } = project.data;
+const href = `/projects/${project.id}/`;
+const large = size === 'large';
+const coverClass = large ? 'aspect-[16/10] md:aspect-auto md:h-full md:min-h-[300px]' : 'aspect-[16/10]';
+---
+
+<article
+  data-project={project.id}
+  data-size={size}
+  data-glow
+  data-reveal
+  class:list={[
+    'project-card group relative overflow-hidden rounded-2xl border border-line bg-surface-1 transition-colors duration-300 hover:border-zinc-600',
+    large && 'md:col-span-2 md:grid md:grid-cols-[1.3fr_1fr]',
+  ]}
+>
+  <div class:list={['overflow-hidden border-b border-line', large && 'md:border-r md:border-b-0']}>
+    <div transition:name={`cover-${project.id}`} class="h-full">
+      {
+        cover ? (
+          <Image
+            src={cover}
+            alt={coverAlt ?? title}
+            widths={[480, 800, 1200]}
+            sizes={large ? '(min-width: 768px) 640px, 92vw' : '(min-width: 768px) 520px, 92vw'}
+            class:list={['w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]', coverClass]}
+          />
+        ) : (
+          <CoverPlaceholder title={title} class={coverClass} />
+        )
+      }
+    </div>
+  </div>
+
+  <div class:list={['relative flex flex-col p-5 md:p-6', large && 'md:justify-center md:p-8']}>
+    {large && featured && <p class="label-mono mb-2">Featured</p>}
+    <h3 class:list={['font-semibold tracking-[-0.01em] text-balance', large ? 'text-xl md:text-2xl' : 'text-lg']}>
+      <a href={href} class="card-link focus-visible:outline-none">{title}</a>
+    </h3>
+    <p class="mt-2 text-sm leading-relaxed text-text-2">{summary}</p>
+    <ul data-tags class="mt-4 flex flex-wrap gap-1.5" aria-label="Tech stack">
+      {stack.map((tech) => <li class="rounded-md border border-line px-2 py-0.5 font-mono text-[11px] text-text-2">{tech}</li>)}
+    </ul>
+    <span class="mt-5 inline-flex items-center gap-1.5 text-sm text-text-1" aria-hidden="true">
+      Read case study <span class="transition-transform duration-200 group-hover:translate-x-[3px]">→</span>
+    </span>
+  </div>
+</article>
