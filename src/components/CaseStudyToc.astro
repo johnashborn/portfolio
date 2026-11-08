@@ -1,0 +1,32 @@
+---
+interface Props {
+  items: { slug: string; text: string }[];
+}
+const { items } = Astro.props;
+---
+
+{
+  items.length > 1 ? (
+    <nav data-toc aria-label="On this page" class="hidden lg:block">
+      <ul class="sticky top-24 flex flex-col gap-2.5 border-l border-line text-[13px]">
+        {items.map((item) => (
+          <li>
+            <a
+              href={`#${item.slug}`}
+              class="-ml-px block border-l border-transparent pl-4 text-text-3 transition-colors hover:text-text-1 aria-[current=true]:border-text-1 aria-[current=true]:text-text-1"
+            >
+              {item.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  ) : (
+    <div class="hidden lg:block" />
+  )
+}
+
+<script>
+  import { initToc } from '../scripts/toc';
+  document.addEventListener('astro:page-load', initToc);
+</script>

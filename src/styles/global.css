@@ -130,6 +130,95 @@
   transform: scaleY(var(--progress));
 }
 
+/* Case-study body (Markdown). */
+.prose-case {
+  max-width: 68ch;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-2);
+}
+.prose-case > * + * {
+  margin-top: 1.1em;
+}
+.prose-case h2 {
+  margin-top: 2.6em;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--text-1);
+}
+.prose-case h2:first-child {
+  margin-top: 0;
+}
+.prose-case h3 {
+  margin-top: 2em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-1);
+}
+.prose-case h2 + *,
+.prose-case h3 + * {
+  margin-top: 0.6em;
+}
+.prose-case a {
+  color: var(--text-1);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #52525b;
+}
+.prose-case a:hover {
+  text-decoration-color: var(--text-1);
+}
+.prose-case strong {
+  color: var(--text-1);
+  font-weight: 600;
+}
+.prose-case ul,
+.prose-case ol {
+  padding-left: 1.25em;
+}
+.prose-case ul {
+  list-style: disc;
+}
+.prose-case ol {
+  list-style: decimal;
+}
+.prose-case li + li {
+  margin-top: 0.35em;
+}
+.prose-case li::marker {
+  color: #52525b;
+}
+.prose-case img {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.prose-case :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--text-1);
+  background: var(--surface-1);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+.prose-case pre {
+  font-size: 13px;
+  line-height: 1.65;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-1) !important;
+  overflow-x: auto;
+}
+.prose-case blockquote {
+  border-left: 2px solid var(--text-1);
+  padding: 0.15em 0 0.15em 1.1em;
+  font-size: 1.05rem;
+  color: var(--text-1);
+}
+
 @utility container-page {
   @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12;
 }
