@@ -27,8 +27,17 @@ const ogImage = new URL(image ?? site.seo.ogImage, Astro.site);
     <script is:inline>
       // Marks that JS runs so motion styles may hide content before revealing it.
       // Re-applied after each client-side navigation because <html> attributes are swapped.
-      document.documentElement.classList.add('js');
-      document.addEventListener('astro:after-swap', () => document.documentElement.classList.add('js'));
+      // Failsafe: if the reveal script hasn't started within 3s (blocked, slow or broken), show everything.
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        setTimeout(function () {
+          if (!root.classList.contains('reveal-ready')) root.classList.add('reveal-failed');
+        }, 3000);
+        document.addEventListener('astro:after-swap', function () {
+          document.documentElement.classList.add('js');
+        });
+      })();
     </script>
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
@@ -60,5 +69,8 @@ const ogImage = new URL(image ?? site.seo.ogImage, Astro.site);
     <Nav />
     <slot />
     <Footer />
+    <script>
+      import '../scripts/index';
+    </script>
   </body>
 </html>
