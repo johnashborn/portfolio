@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { loadPage } from './helpers';
+import { site } from '../../src/site';
 
 describe('contact form markup (Netlify Forms)', () => {
   const $ = loadPage('/');
@@ -36,6 +37,14 @@ describe('contact form markup (Netlify Forms)', () => {
 
   it('labels the section 04 / Contact', () => {
     expect($('section#contact .label-mono').first().text().trim()).toBe('04 / Contact');
+  });
+});
+
+describe('reply-time promise', () => {
+  it('comes from site config on both the contact section and /thanks', () => {
+    expect(site.replyTime.length).toBeGreaterThan(0);
+    expect(loadPage('/')('section#contact').text()).toContain(site.replyTime);
+    expect(loadPage('/thanks')('main').text()).toContain(site.replyTime);
   });
 });
 

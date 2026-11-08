@@ -18,3 +18,8 @@ Thumbs.db
 
 # brainstorming companion mockups
 .superpowers/
+
+# test & tool output
+test-results/
+playwright-report/
+*.log

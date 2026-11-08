@@ -4,11 +4,11 @@ export default defineConfig({
   testDir: 'tests/e2e',
   fullyParallel: true,
   reporter: 'line',
-  use: { baseURL: 'http://localhost:4321' },
+  use: { baseURL: 'http://localhost:4329' },
   webServer: {
-    command: 'npm run build && npm run preview -- --port 4321',
-    port: 4321,
-    reuseExistingServer: true,
+    command: 'npm run build && npm run preview -- --port 4329',
+    port: 4329,
+    reuseExistingServer: false,
     timeout: 180_000,
   },
   projects: [

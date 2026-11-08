@@ -6,7 +6,6 @@ cover: ./images/project-two.svg
 coverAlt: Project Two showing a monthly summary chart
 year: 2025
 role: Solo
-timeline: 3 weeks
 type: personal
 stack: [JavaScript, PHP, MySQL]
 repoUrl: https://github.com/your-username/project-two
@@ -23,7 +22,7 @@ TODO: The main features.
 
 ## How it works
 
-TODO: How the pieces fit together.
+TODO: How the pieces fit together. Long links wrap on phones too, e.g. https://github.com/your-username/barangay_reservation_system_project/blob/main/README.md
 
 ## What I'd improve
 

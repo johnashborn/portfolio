@@ -12,6 +12,8 @@ export interface SiteConfig {
   location: string;
   bio: string;
   email: string;
+  /** Completes "I usually reply …" — only promise what you can keep. */
+  replyTime: string;
   socials: { github: string; linkedin: string };
   cvPath: string;
   photo?: ImageMetadata;
@@ -30,6 +32,7 @@ export const site: SiteConfig = {
   // TODO: 2–3 honest sentences in your own voice — what you build, what you're learning, what you want next.
   bio: "I build full-stack web apps — from database tables and APIs to the interface people actually click. I learn by shipping small, real projects, and I'm looking for an internship or junior role where I can keep growing with a good team.",
   email: 'you@example.com', // TODO
+  replyTime: 'within a day', // TODO: only promise what you can keep, e.g. 'within 2–3 days'
   socials: {
     github: 'https://github.com/your-username', // TODO
     linkedin: 'https://www.linkedin.com/in/your-username', // TODO

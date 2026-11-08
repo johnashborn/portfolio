@@ -150,6 +150,7 @@
   font-size: 15px;
   line-height: 1.75;
   color: var(--text-2);
+  overflow-wrap: anywhere; /* long URLs or identifiers must wrap, never widen the page */
 }
 .prose-case > * + * {
   margin-top: 1.1em;

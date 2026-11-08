@@ -92,9 +92,14 @@ If you enter something invalid (a missing field, or a cover without `coverAlt`),
 1. Push this repository to GitHub.
 2. In Netlify: **Add new site → Import an existing project**, then pick the repo. The build settings are read from `netlify.toml`.
 3. After the first deploy, put your real URL in `site` in `astro.config.mjs` and in `public/robots.txt`, then push again.
-4. **Contact form:** Netlify detects the `contact` form automatically. To get emails for new messages, go to
-   **Site configuration → Forms → Form notifications → Add notification → Email notification**.
-   Send yourself a test message from the live site to confirm it works.
+4. **Contact form:** form detection is usually **off** for new Netlify sites. Turn it on:
+   **Forms → Enable form detection**, then **Deploys → Trigger deploy** so Netlify scans the HTML and registers the `contact` form.
+5. **Email notifications:** **Site configuration → Forms → Form notifications → Add notification → Email notification**.
+6. **Test it:** send yourself a message from the live site, then check it appears under **Forms** in the Netlify dashboard.
+   If it doesn't, the form isn't registered yet. Re-check step 4.
+
+> Case-study pages use the project's cover image as the link-preview picture. Social sites ignore SVGs,
+> so use PNG or JPG screenshots for your covers.
 
 ## Design
 

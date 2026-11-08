@@ -48,7 +48,7 @@ test('scripts re-initialise after client-side navigation', async ({ page }) => {
   await expect(page.locator('#achievements [data-count-target]').first()).toHaveText('8');
 });
 
-for (const path of ['/', '/projects/project-three/', '/thanks/']) {
+for (const path of ['/', '/projects/project-two/', '/projects/project-three/', '/thanks/']) {
   test(`no horizontal scroll at 320px on ${path}`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 700 });
     await page.goto(path);

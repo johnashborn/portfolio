@@ -32,6 +32,16 @@ test.describe('desktop', () => {
 test.describe('mobile', () => {
   test.use({ viewport: { width: 375, height: 740 } });
 
+  test('an odd number of meta cells leaves no empty box', async ({ page }) => {
+    await page.goto('/projects/project-two/');
+    const grid = page.locator('[data-meta]');
+    await expect(grid.locator('dt')).toHaveCount(3);
+    const gridBox = (await grid.boundingBox())!;
+    const lastBox = (await grid.locator(':scope > div').last().boundingBox())!;
+    // The last cell must stretch across the row instead of leaving a grey gap beside it.
+    expect(lastBox.width).toBeGreaterThan(gridBox.width - 4);
+  });
+
   test('hides the outline', async ({ page }) => {
     await page.goto('/projects/project-one/');
     await expect(page.locator('[data-toc]')).toBeHidden();
