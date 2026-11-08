@@ -1,0 +1,16 @@
+{
+  "main": {
+    "stats": [
+      { "value": "8", "label": "projects built (TODO)" },
+      { "value": "2", "label": "certifications (TODO)" },
+      { "value": "1", "label": "hackathon (TODO)" }
+    ],
+    "certifications": [
+      { "name": "TODO: Certification name", "issuer": "Issuer", "year": 2025, "url": "https://example.com/verify" },
+      { "name": "TODO: Another certification", "issuer": "Issuer", "year": 2024, "url": "https://example.com/verify" }
+    ],
+    "awards": [
+      { "name": "TODO: Hackathon or award", "context": "What you built or why you won", "year": 2025 }
+    ]
+  }
+}
