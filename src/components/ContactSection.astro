@@ -1,0 +1,59 @@
+---
+import { site } from '../site';
+import SectionHeading from './SectionHeading.astro';
+import ContactForm from './ContactForm.astro';
+
+const rowClass =
+  'flex items-center justify-between rounded-xl border border-line px-4 py-3 text-sm text-text-1 transition-colors hover:border-zinc-600';
+---
+
+<section id="contact" aria-labelledby="contact-title" class="contact-glow relative overflow-hidden border-t border-zinc-900 py-20 md:py-28">
+  <div class="container-page relative z-10 grid gap-10 md:grid-cols-[1fr_1.1fr] md:gap-14">
+    <div>
+      <SectionHeading index="04" label="Contact" title="Let's talk." id="contact-title" />
+      <p class="-mt-4 max-w-md text-[15px] leading-relaxed text-text-2" data-reveal>
+        Hiring for an internship or a junior full-stack role? Send me a message — I usually reply within a day.
+      </p>
+
+      <ul class="mt-8 flex flex-col gap-2.5" data-reveal>
+        <li class="flex items-center gap-2">
+          <a href={`mailto:${site.email}`} class:list={[rowClass, 'min-w-0 flex-1']}>
+            <span class="truncate">{site.email}</span>
+            <span class="text-text-3" aria-hidden="true">✉</span>
+          </a>
+          <button
+            type="button"
+            data-copy-email
+            data-email={site.email}
+            hidden
+            class="shrink-0 rounded-xl border border-line px-4 py-3 text-sm text-text-2 transition-colors hover:border-zinc-600 hover:text-text-1"
+          >
+            Copy
+          </button>
+        </li>
+        <li>
+          <a href={site.socials.linkedin} target="_blank" rel="noopener noreferrer" class={rowClass}>
+            LinkedIn <span class="text-text-3" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href={site.socials.github} target="_blank" rel="noopener noreferrer" class={rowClass}>
+            GitHub <span class="text-text-3" aria-hidden="true">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href={site.cvPath} download class={rowClass}>
+            Résumé (PDF) <span class="text-text-3" aria-hidden="true">↓</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <ContactForm />
+  </div>
+</section>
+
+<script>
+  import { initCopyEmail } from '../scripts/copy-email';
+  document.addEventListener('astro:page-load', initCopyEmail);
+</script>
