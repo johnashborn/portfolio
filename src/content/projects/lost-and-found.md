@@ -1,5 +1,4 @@
 ---
-# Drafted from the Lost-And-Found code (the repo has no README). Check every line, and rewrite "What I learned" in your own words.
 title: Lost and Found
 summary: A desktop system where BISU students and staff report lost items, log found ones and track each item until it's claimed.
 cover: ./images/lost-and-found-dashboard.png

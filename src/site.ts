@@ -1,6 +1,5 @@
 import type { ImageMetadata } from 'astro';
 import { siGit, siJavascript, siLaravel, siMysql, siPhp, siTailwindcss } from 'simple-icons';
-// Your photo (src/assets/photo.jpg). Shown in the hero, cropped to 4:5.
 import photo from './assets/photo.jpg';
 
 export interface SiteConfig {
@@ -8,7 +7,6 @@ export interface SiteConfig {
   role: string;
   studentLine: string;
   status: string;
-  graduationYear: string;
   location: string;
   bio: string;
   email: string;
@@ -27,9 +25,7 @@ export const site: SiteConfig = {
   role: 'Aspiring Full-stack developer and Aspiring AI automation Specialist',
   studentLine: 'Information Technology student',
   status: 'Open to internships & junior roles · Graduating 2028',
-  graduationYear: '2028',
   location: 'Tagbilaran City, Philippines',
-  // Draft bio — rewrite it in your own voice (2–3 sentences: what you build, what you're learning, what you want next).
   bio: "I build full-stack web apps — from database tables and APIs to the interface people actually click. I learn by shipping small, real projects, and I'm looking for an internship or junior role where I can keep growing with a good team.",
   email: 'arantonjohnrey075@gmail.com',
   replyTime: 'within 1-3 days',
@@ -39,7 +35,6 @@ export const site: SiteConfig = {
   },
   cvPath: '/cv.pdf',
   photo,
-  // The tools you actually use, most confident first.
   stack: [
     { name: 'Laravel', icon: siLaravel.path },
     { name: 'PHP', icon: siPhp.path },

@@ -1,5 +1,4 @@
 ---
-# Drafted from the Kiligram README. Check every line, and rewrite "What I learned" in your own words.
 title: Kiligram
 summary: A private, login-protected photo gallery and letters page built as a gift, using plain JavaScript on GitHub Pages and Supabase for accounts and storage.
 cover: ./images/kiligram-login.png

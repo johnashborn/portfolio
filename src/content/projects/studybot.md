@@ -1,5 +1,4 @@
 ---
-# Drafted from the Studybot README. Check every line, and rewrite "What I learned" in your own words.
 title: StudyBot
 summary: An Android study assistant that runs a small language model entirely on the phone, so it works with no internet connection.
 year: 2026

@@ -1,5 +1,4 @@
 ---
-# Drafted from the Figma screens and what you told me. Check every line, and rewrite "What I learned" in your own words.
 title: Lumnia
 summary: A mobile app concept that puts a seller's Shopee, Lazada, TikTok Shop and in-store sales in one dashboard, so they stop checking each app one by one. Top 25 of 253 in the Philippine Startup Challenge, Central Visayas.
 cover: ./images/lumnia-screens.jpg
@@ -37,4 +36,4 @@ Lumnia is a design, not working software yet. The prototype assumes each store c
 
 ## What I learned
 
-> Leading a team of three and pitching taught me to explain a product by the seller's problem first, and the features second.
+> Leading a team of three and pitching taught me to explain a product by the seller's problem first, and the features second. It taught me to answer confidently and more clearly on investors questions.

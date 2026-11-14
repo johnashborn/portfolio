@@ -1,5 +1,4 @@
 ---
-# Check the end month: it assumes the school year ended in May 2026.
 type: org
 title: Public Relations Officer
 place: CCIS, BISU Balilihan SSG

@@ -1,5 +1,4 @@
 ---
-# Drafted from the Closure-Cafe-POS-System README. Check every line, and rewrite "What I learned" in your own words.
 title: Closure Cafe POS
 summary: A desktop point-of-sale system for a cafe, with a cashier screen for taking orders and an admin panel for products and sales history.
 cover: ./images/closure-cafe-menu.png

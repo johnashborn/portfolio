@@ -1,5 +1,4 @@
 ---
-# Drafted from the EXTRAK README and code. Check every line, and rewrite "What I learned" in your own words.
 title: EXTRACK
 summary: A web system that moves BISU extension-service requests through campus and university approval, then archives the finished work with photo reports.
 cover: ./images/extrack-landing.png

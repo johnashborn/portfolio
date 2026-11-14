@@ -1,7 +1,8 @@
 # Portfolio
 
-My personal developer portfolio: an Information Technology student building full-stack web apps.
-Built with **Astro 5** and **Tailwind CSS 4**, hosted on **Netlify**.
+Personal developer portfolio of John Rey B. Aranton, an Information Technology student building full-stack web apps
+and AI automations. Built with **Astro 7** and **Tailwind CSS 4**, hosted on **Netlify** at
+[johnreyaranton.netlify.app](https://johnreyaranton.netlify.app).
 
 ## Run it locally
 
@@ -10,98 +11,102 @@ npm install
 npm run dev        # http://localhost:4321
 ```
 
+On Windows PowerShell, use `npm.cmd` instead of `npm` if scripts are blocked.
+
 | Command | What it does |
-|---|---|
+| --- | --- |
 | `npm run dev` | Start the dev server with hot reload |
 | `npm run build` | Build the static site into `dist/` |
 | `npm run preview` | Serve the built site locally |
 | `npm run check` | Type-check components and validate all content files |
+| `npm run cv` | Regenerate `public/cv.pdf` from `cv/cv.html` |
 | `npm test` | Unit tests, built-HTML tests and browser tests (Playwright) |
 
 The first time you run the browser tests, install Chromium with `npx playwright install chromium`.
 
-## Replace the placeholder content
+## Editing content
 
-Every placeholder is marked `TODO`. Search the project for `TODO` to find them all.
+### Details: `src/site.ts`
 
-### Your details: `src/site.ts`
-Name, status badge, graduation year, location, bio, email, GitHub and LinkedIn links, and your tech stack.
+Name, role, status badge, location, bio, email, social links, photo and tech stack.
 Stack icons come from [simple-icons](https://simpleicons.org/): import e.g. `siVuedotjs` and use `.path`.
-
-**Photo (optional):** put a portrait (about 800×1000) in `src/assets/photo.jpg`, then uncomment the two
-`photo` lines in `src/site.ts`. With a photo, the hero switches to a two-column layout.
-
-**CV:** edit `cv/cv.html`, then run `npm.cmd run cv` to regenerate `public/cv.pdf` (one A4 page, real text for applicant tracking systems). `npm run test:build` checks it is still one page.
-
-**Social preview image:** replace `public/og.png` (1200×630). This is the image shown when your link is shared.
+The hero photo is `src/assets/photo.jpg`, cropped to 4:5. Replace the file to change it.
 
 ### Projects: `src/content/projects/*.md`
+
 One Markdown file per project. The filename becomes the URL (`my-app.md` → `/projects/my-app/`).
 
 ```yaml
 ---
 title: Study Room Booking
 summary: One sentence on what it is and who it's for.
-cover: ./images/my-app.png     # optional; put screenshots in src/content/projects/images/
+cover: ./images/my-app.png     # optional; screenshots live in src/content/projects/images/
 coverAlt: Booking dashboard showing today's rooms   # required when cover is set
 year: 2026
 role: Solo · full-stack          # optional
 timeline: 8 weeks                # optional
-type: capstone                   # capstone | school | personal | client
-stack: [Laravel, React, MySQL]
+type: school                     # capstone | school | personal | client | startup
+stack: [Laravel, MySQL]
 liveUrl: https://…               # optional
 repoUrl: https://github.com/…    # optional
 featured: true                   # the featured project gets the large card
 order: 1                         # position on the home page
 draft: false                     # true = only visible in `npm run dev`
 ---
-
-## Overview
-## What I built
-## How it works
-## What I'd improve
-## What I learned
-> A one-line takeaway, shown as a pull-quote.
 ```
 
-Each `##` heading becomes an entry in the case study's side outline. Use whatever headings suit the project.
+Each `##` heading in the body becomes an entry in the case study's side outline, and a `>` quote under
+"What I learned" is shown as a pull-quote. Use PNG or JPG covers: social sites ignore SVG link previews.
 
 ### Journey: `src/content/journey/*.md`
-Education, student orgs, freelance work and self-learning milestones, all on one timeline (newest first).
+
+Education, student orgs, freelance work and milestones on one timeline, oldest first.
 
 ```yaml
 ---
-type: education        # education | org | freelance | milestone
-title: BS Information Technology
-place: Your University # optional
-start: 2023-08
-end: 2027-06           # optional; leave out for "Present" (milestones show a single date)
-tags: [Web Development]
+type: org              # education | org | freelance | milestone
+title: President
+place: The Legion, BISU Balilihan   # optional
+start: 2026-08
+end: 2027-05           # optional; leave out for "Present" (milestones show a single date)
+tags: [Leadership]
 ---
 One or two sentences.
 ```
 
 ### Achievements: `src/content/achievements.json`
-Up to 4 `stats`, plus `certifications` (with optional verify `url`) and `awards`.
-Keep the stats honest. Empty lists are hidden automatically, and if everything is empty, the whole section and its nav link disappear.
 
-If you enter something invalid (a missing field, or a cover without `coverAlt`), `npm run check` and `npm run build` will tell you exactly which file is wrong.
+Up to 4 `stats`, plus `certifications` (with an optional verify `url`) and `awards`.
+Empty lists are hidden automatically.
+
+If a content file is invalid (a missing field, or a cover without `coverAlt`), `npm run check` and
+`npm run build` name the file that is wrong.
+
+### CV: `cv/cv.html`
+
+Edit it, then run `npm run cv` to regenerate `public/cv.pdf`. It must stay one A4 page with real text so
+applicant tracking systems can read it; `npm run test:build` checks both.
+
+### Social preview: `public/og.png`
+
+The 1200×630 image shown when the home page link is shared. Case-study pages use their project cover instead.
 
 ## Deploy to Netlify
 
 1. Push this repository to GitHub.
-2. In Netlify: **Add new site → Import an existing project**, then pick the repo. The build settings are read from `netlify.toml`.
-3. After the first deploy, put your real URL in `site` in `astro.config.mjs` and in `public/robots.txt`, then push again.
-4. **Contact form:** form detection is usually **off** for new Netlify sites. Turn it on:
-   **Forms → Enable form detection**, then **Deploys → Trigger deploy** so Netlify scans the HTML and registers the `contact` form.
-5. **Email notifications:** **Site configuration → Forms → Form notifications → Add notification → Email notification**.
-6. **Test it:** send yourself a message from the live site, then check it appears under **Forms** in the Netlify dashboard.
-   If it doesn't, the form isn't registered yet. Re-check step 4.
+2. In Netlify: **Add new project → Import an existing project**, then pick the repo. Build settings come from
+   `netlify.toml`.
+3. Rename the project to `johnreyaranton` so the address matches `site` in `astro.config.mjs` and
+   `public/robots.txt`. If you use a different address, update both.
+4. **Contact form:** turn on **Forms → Enable form detection**, then **Deploys → Trigger deploy** so Netlify
+   registers the `contact` form.
+5. **Email notifications:** **Forms → Form notifications → Add notification → Email notification**.
+6. **Test it:** send a message from the live site and check it appears under **Forms** in Netlify.
 
-> Case-study pages use the project's cover image as the link-preview picture. Social sites ignore SVGs,
-> so use PNG or JPG screenshots for your covers.
+Every push to `main` redeploys the site.
 
-## Design
+## Security
 
-Dark, monochrome "soft glow" style. The full design spec is in
-`docs/superpowers/specs/2026-11-08-portfolio-design.md`, and its §13 has a checklist of everything to gather.
+`netlify.toml` sets a Content-Security-Policy, HSTS, a Permissions-Policy and the usual hardening headers.
+`tests/e2e/security-headers.spec.ts` applies that policy in the browser tests, so anything it would block
+fails a test before it reaches production.

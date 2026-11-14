@@ -2,8 +2,8 @@ let observer: IntersectionObserver | undefined;
 
 /**
  * Fade/slide [data-reveal] elements in once as they enter the viewport.
- * CSS hides them only under html.js.reveal-ready with motion allowed, so no-JS,
- * reduced-motion and script-failure cases always show content.
+ * CSS hides them only when JS runs, motion is allowed and the 3s failsafe hasn't fired,
+ * so no-JS, reduced-motion and script-failure cases always show content.
  */
 export function initReveal(): void {
   observer?.disconnect();

@@ -1,7 +1,8 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob, file } from 'astro/loaders';
 
-/** Spec §5.1 — one Markdown file per project; the body is the case study. */
+/** One Markdown file per project; the body is the case study. */
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: ({ image }) =>
@@ -16,8 +17,8 @@ const projects = defineCollection({
         timeline: z.string().optional(),
         type: z.enum(['capstone', 'school', 'personal', 'client', 'startup']),
         stack: z.array(z.string()).min(1),
-        liveUrl: z.string().url().optional(),
-        repoUrl: z.string().url().optional(),
+        liveUrl: z.url().optional(),
+        repoUrl: z.url().optional(),
         featured: z.boolean().default(false),
         order: z.number(),
         draft: z.boolean().default(false),
@@ -28,7 +29,7 @@ const projects = defineCollection({
       }),
 });
 
-/** Spec §5.2 — education, orgs, freelance work and self-learning milestones on one timeline. */
+/** Education, orgs, freelance work and milestones on one timeline. */
 const journey = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/journey' }),
   schema: z.object({
@@ -41,13 +42,13 @@ const journey = defineCollection({
   }),
 });
 
-/** Spec §5.3 — a single entry with id "main". */
+/** A single entry with id "main". */
 const achievements = defineCollection({
   loader: file('src/content/achievements.json'),
   schema: z.object({
     stats: z.array(z.object({ value: z.string(), label: z.string() })).max(4),
     certifications: z.array(
-      z.object({ name: z.string(), issuer: z.string().optional(), year: z.number().int(), url: z.string().url().optional() }),
+      z.object({ name: z.string(), issuer: z.string().optional(), year: z.number().int(), url: z.url().optional() }),
     ),
     // `year` is a number, or a short period such as "Since 2024".
     awards: z.array(z.object({ name: z.string(), context: z.string().optional(), year: z.union([z.number().int(), z.string()]) })),

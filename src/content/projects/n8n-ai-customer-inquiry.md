@@ -1,5 +1,4 @@
 ---
-# Drafted from the n8n-ai-customer-inquiry README. Check every line, and rewrite "What I learned" in your own words.
 title: AI Customer Inquiry Classifier
 summary: Two n8n workflows that sort customer messages with an LLM, by category and urgency, and reply to real customers by email while ignoring spam.
 cover: ./images/n8n-classifier-api.png
