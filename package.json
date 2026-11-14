@@ -11,7 +11,8 @@
     "test:unit": "vitest run tests/unit",
     "test:build": "astro build && vitest run tests/build",
     "test:e2e": "playwright test",
-    "test": "npm run test:unit && npm run test:build && npm run test:e2e"
+    "test": "npm run test:unit && npm run test:build && npm run test:e2e",
+    "cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.12",

@@ -10,9 +10,14 @@ describe('formatMonth', () => {
 const j = (id: string, start: string) => ({ id, data: { start: new Date(start) } });
 
 describe('sortJourney', () => {
-  it('puts the newest start first', () => {
-    const out = sortJourney([j('old', '2022-08'), j('new', '2025-01'), j('mid', '2024-06')]);
-    expect(out.map((x) => x.id)).toEqual(['new', 'mid', 'old']);
+  it('puts the oldest start first, so the timeline reads in order', () => {
+    const out = sortJourney([j('mid', '2024-06'), j('new', '2025-01'), j('old', '2022-08')]);
+    expect(out.map((x) => x.id)).toEqual(['old', 'mid', 'new']);
+  });
+
+  it('orders entries that start in the same month by id, so the order never shuffles', () => {
+    const out = sortJourney([j('b-role', '2026-08'), j('a-role', '2026-08')]);
+    expect(out.map((x) => x.id)).toEqual(['a-role', 'b-role']);
   });
 });
 

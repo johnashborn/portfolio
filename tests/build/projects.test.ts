@@ -13,11 +13,19 @@ describe('Projects section', () => {
   it('renders exactly one large card, for the featured project', () => {
     const large = section.find('[data-size="large"]');
     expect(large.length).toBe(1);
-    expect(large.attr('data-project')).toBe('project-one');
+    expect(large.attr('data-project')).toBe('extrack');
   });
 
   it('orders cards by `order`', () => {
-    expect(cards.map((_, c) => $(c).attr('data-project')).get()).toEqual(['project-one', 'project-two', 'project-three']);
+    expect(cards.map((_, c) => $(c).attr('data-project')).get()).toEqual([
+      'extrack',
+      'lumnia',
+      'n8n-ai-customer-inquiry',
+      'studybot',
+      'closure-cafe-pos',
+      'kiligram',
+      'lost-and-found',
+    ]);
   });
 
   it('links every card to its case study', () => {
@@ -28,9 +36,16 @@ describe('Projects section', () => {
   });
 
   it('shows a placeholder instead of an image when a project has no cover', () => {
-    const three = section.find('[data-project="project-three"]');
-    expect(three.find('[data-cover-placeholder]').length).toBe(1);
-    expect(three.find('img').length).toBe(0);
+    const bot = section.find('[data-project="studybot"]');
+    expect(bot.find('[data-cover-placeholder]').length).toBe(1);
+    expect(bot.find('img').length).toBe(0);
+  });
+
+  it('shows a real screenshot on every project except StudyBot', () => {
+    cards.each((_, c) => {
+      const id = $(c).attr('data-project');
+      expect($(c).find('img').length, id).toBe(id === 'studybot' ? 0 : 1);
+    });
   });
 
   it('gives every image alt text', () => {
@@ -40,6 +55,6 @@ describe('Projects section', () => {
   });
 
   it('shows every stack tag, even long lists', () => {
-    expect(section.find('[data-project="project-three"] [data-tags] li').length).toBe(7);
+    expect(section.find('[data-project="extrack"] [data-tags] li').length).toBe(7);
   });
 });

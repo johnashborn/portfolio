@@ -31,7 +31,7 @@ Stack icons come from [simple-icons](https://simpleicons.org/): import e.g. `siV
 **Photo (optional):** put a portrait (about 800×1000) in `src/assets/photo.jpg`, then uncomment the two
 `photo` lines in `src/site.ts`. With a photo, the hero switches to a two-column layout.
 
-**CV:** replace `public/cv.pdf` with your real CV (same filename).
+**CV:** edit `cv/cv.html`, then run `npm.cmd run cv` to regenerate `public/cv.pdf` (one A4 page, real text for applicant tracking systems). `npm run test:build` checks it is still one page.
 
 **Social preview image:** replace `public/og.png` (1200×630). This is the image shown when your link is shared.
 

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>John Rey B. Aranton — CV</title>
+    <!--
+      Source for public/cv.pdf. Edit this file, then run `npm run cv` to regenerate the PDF.
+      Layout follows common CV guidance: one page, single column, standard headings,
+      real (selectable) text, no photo, projects written as action + tools + result.
+    -->
+    <style>
+      @page {
+        size: A4;
+        margin: 11mm 13mm;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        /* Standard fonts embed as TrueType; variable web fonts become Type 3, which ATS parsers read poorly. */
+        font-family: Calibri, Carlito, Arial, sans-serif;
+        font-size: 9.6pt;
+        line-height: 1.27;
+        color: #18181b;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      header {
+        padding-bottom: 6pt;
+        border-bottom: 1.2pt solid #18181b;
+      }
+      h1 {
+        font-size: 21pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .headline {
+        margin-top: 2pt;
+        font-size: 10.5pt;
+        font-weight: 500;
+        color: #3f3f46;
+      }
+      .portfolio {
+        font-size: 9pt;
+        font-weight: 600;
+        color: #18181b;
+      }
+      .contact {
+        margin-top: 5pt;
+        font-size: 8.6pt;
+        color: #3f3f46;
+      }
+      .contact span + span::before {
+        content: '·';
+        margin: 0 4pt;
+        color: #a1a1aa;
+      }
+      section {
+        margin-top: 7pt;
+      }
+      h2 {
+        font-size: 9pt;
+        font-weight: 700;
+        /* No letter-spacing: PDF text extraction (and ATS parsers) split spaced-out letters, e.g. "SKI L L S". */
+        text-transform: uppercase;
+        padding-bottom: 2pt;
+        margin-bottom: 3.5pt;
+        border-bottom: 0.6pt solid #d4d4d8;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12pt;
+        align-items: baseline;
+      }
+      .title {
+        font-weight: 700;
+      }
+      .sub {
+        color: #3f3f46;
+      }
+      .date {
+        flex-shrink: 0;
+        font-size: 8.6pt;
+        color: #52525b;
+      }
+      .entry + .entry {
+        margin-top: 4pt;
+      }
+      ul {
+        margin-top: 1.5pt;
+        padding-left: 11pt;
+      }
+      li {
+        margin-top: 0.5pt;
+      }
+      li::marker {
+        color: #71717a;
+      }
+      .skills {
+        display: grid;
+        grid-template-columns: 30mm 1fr;
+        row-gap: 1.5pt;
+      }
+      .skills dt {
+        font-weight: 700;
+      }
+      p.summary {
+        color: #27272a;
+      }
+      .muted {
+        color: #52525b;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>John Rey B. Aranton</h1>
+      <p class="headline row">
+        <span>Full-Stack Developer &amp; AI Automation · BS Information Technology Student</span>
+        <a class="portfolio" href="https://johnreyaranton.netlify.app">Portfolio: johnreyaranton.netlify.app</a>
+      </p>
+      <p class="contact">
+        <span>Tagbilaran City, Philippines</span>
+        <span><a href="tel:+639999689713">0999 968 9713</a></span>
+        <span><a href="mailto:arantonjohnrey075@gmail.com">arantonjohnrey075@gmail.com</a></span>
+        <span><a href="https://www.linkedin.com/in/johnreyaranton">linkedin.com/in/johnreyaranton</a></span>
+        <span><a href="https://github.com/johnashborn">github.com/johnashborn</a></span>
+      </p>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p class="summary">
+        Third-year IT student and consistent Dean's Lister who builds full-stack web apps with Laravel and MySQL and AI
+        automations with n8n. Led a three-person team to the Top 25 of 253 entries in the Philippine Startup Challenge
+        (Central Visayas) and won 1st place in a campus Java coding competition. Looking for a software development
+        internship or junior role.
+      </p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">Bachelor of Science in Information Technology</span></span>
+          <span class="date">Aug 2024 – Expected 2028</span>
+        </div>
+        <div class="sub">Bohol Island State University – Balilihan Campus</div>
+        <ul>
+          <li>Consistent Dean's Lister since 2024.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <dl class="skills">
+        <dt>Languages</dt>
+        <dd>PHP, Java, JavaScript, SQL, C++, HTML, CSS</dd>
+        <dt>Frameworks</dt>
+        <dd>Laravel, Filament, Alpine.js, Tailwind CSS, JavaFX, Java Swing, Android</dd>
+        <dt>Data &amp; backend</dt>
+        <dd>MySQL, Supabase, REST APIs and webhooks</dd>
+        <dt>AI &amp; automation</dt>
+        <dd>n8n, LLM APIs (OpenRouter), llama.cpp</dd>
+        <dt>Tools</dt>
+        <dd>Git, GitHub Actions, Docker, Figma, NetBeans</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">EXTRACK</span> <span class="sub">— Extension services tracking system · Laravel, MySQL, Filament, Alpine.js, Leaflet</span></span>
+          <span class="date">2026</span>
+        </div>
+        <ul>
+          <li>Built a web system that moves BISU extension-service requests through a three-level approval chain (Extension Director, Campus Director, University President) across six campuses.</li>
+          <li>Designed five role-based dashboards, photo-based accomplishment reports, a map of every barangay served, and a duplicate-work check that warns directors when another campus has already run a similar service.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">Lumnia</span> <span class="sub">— Multi-marketplace seller dashboard (startup) · Figma</span></span>
+          <span class="date">2026</span>
+        </div>
+        <ul>
+          <li>Led a team of three and pitched Lumnia, which placed in the Top 25 of 253 entries in the Philippine Startup Challenge, Central Visayas.</li>
+          <li>Co-designed a high-fidelity prototype that combines Shopee, Lazada, TikTok Shop and in-store sales in one dashboard, with cross-channel product comparison and ad ROI tracking.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">AI Customer Inquiry Classifier</span> <span class="sub">— n8n, JavaScript, OpenRouter, Docker, Gmail API</span></span>
+          <span class="date">2026</span>
+        </div>
+        <ul>
+          <li>Built two n8n workflows that classify customer messages into 4 categories and 3 urgency levels with an LLM, then return the result through a webhook API or reply by email.</li>
+          <li>Validated the model's output in JavaScript and added retries and clear 400/502 errors so failures never pass silently; spam never gets a reply.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">StudyBot</span> <span class="sub">— Offline AI study assistant for Android · Java, C++, llama.cpp, JNI</span></span>
+          <span class="date">2026</span>
+        </div>
+        <ul>
+          <li>Ran the TinyLlama model (1.1B parameters, about 637 MB quantized) entirely on the phone through llama.cpp and JNI, so the app answers questions with no internet connection.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">Closure Cafe POS</span> <span class="sub">— Desktop point-of-sale system · JavaFX, MySQL</span></span>
+          <span class="date">2026</span>
+        </div>
+        <ul>
+          <li>Built a point-of-sale system with PIN login for cashiers and admins, live order totals with 12% VAT, a sales dashboard and employee time tracking.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Leadership</h2>
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">President</span> <span class="sub">— The Legion (IT student organization), BISU Balilihan</span></span>
+          <span class="date">Aug 2026 – Present</span>
+        </div>
+        <ul>
+          <li>Lead the organization of all IT students on campus, and serve as system admin for the tabulation system used to score campus competitions and pageants.</li>
+          <li>Built a photobooth web app for organization events.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">Student Government</span> <span class="sub">— BISU Balilihan SSG</span></span>
+          <span class="date">Aug 2025 – Present</span>
+        </div>
+        <ul>
+          <li>Senator (Aug 2026 – Present); Public Relations Officer, College of Computing and Information Sciences (Aug 2025 – May 2026).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Awards</h2>
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">Top 25 of 253</span> <span class="sub">— Philippine Startup Challenge, Central Visayas (Lumnia)</span></span>
+          <span class="date">Oct 2026</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="row">
+          <span><span class="title">1st Place</span> <span class="sub">— BISU Balilihan Codeathon, Java (hard category)</span></span>
+          <span class="date">2025</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Seminars &amp; Training</h2>
+      <p>
+        Cybersecurity Seminar, Trend Micro (2025) <span class="muted">·</span> Campus Caravan Startup Seminar, DICT (2025)
+        <span class="muted">·</span> Leadership Training (2025)
+      </p>
+    </section>
+  </body>
+</html>

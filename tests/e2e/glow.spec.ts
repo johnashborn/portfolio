@@ -4,7 +4,7 @@ test.use({ viewport: { width: 1280, height: 900 } });
 
 test('card glow follows the pointer', async ({ page }) => {
   await page.goto('/');
-  const card = page.locator('[data-project="project-two"]');
+  const card = page.locator('[data-project="n8n-ai-customer-inquiry"]');
   await card.scrollIntoViewIfNeeded();
   const box = (await card.boundingBox())!;
   await page.mouse.move(box.x + 120, box.y + 80);

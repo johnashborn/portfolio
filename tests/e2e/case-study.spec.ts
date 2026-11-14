@@ -4,7 +4,7 @@ test.describe('desktop', () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
   test('outline marks the section in view', async ({ page }) => {
-    await page.goto('/projects/project-one/');
+    await page.goto('/projects/extrack/');
     // Put the heading 120px below the top of the viewport, as if reading that section.
     await page.evaluate(() => {
       const h = document.getElementById('how-it-works')!;
@@ -15,16 +15,16 @@ test.describe('desktop', () => {
   });
 
   test('outline marks the last section at the bottom of the page', async ({ page }) => {
-    await page.goto('/projects/project-one/');
+    await page.goto('/projects/extrack/');
     await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }));
     await expect(page.locator('[data-toc] a[href="#what-i-learned"]')).toHaveAttribute('aria-current', 'true');
   });
 
   test('clicking a card on the home page opens its case study', async ({ page }) => {
     await page.goto('/');
-    await page.locator('[data-project="project-one"] .card-link').click();
-    await expect(page).toHaveURL(/\/projects\/project-one\/$/);
-    await expect(page.locator('h1')).toHaveText('Project One');
+    await page.locator('[data-project="n8n-ai-customer-inquiry"] .card-link').click();
+    await expect(page).toHaveURL(/\/projects\/n8n-ai-customer-inquiry\/$/);
+    await expect(page.locator('h1')).toHaveText('AI Customer Inquiry Classifier');
     await expect(page.locator('[data-cover] img')).toBeVisible();
   });
 });
@@ -33,7 +33,7 @@ test.describe('mobile', () => {
   test.use({ viewport: { width: 375, height: 740 } });
 
   test('an odd number of meta cells leaves no empty box', async ({ page }) => {
-    await page.goto('/projects/project-two/');
+    await page.goto('/projects/n8n-ai-customer-inquiry/');
     const grid = page.locator('[data-meta]');
     await expect(grid.locator('dt')).toHaveCount(3);
     const gridBox = (await grid.boundingBox())!;
@@ -43,7 +43,7 @@ test.describe('mobile', () => {
   });
 
   test('hides the outline', async ({ page }) => {
-    await page.goto('/projects/project-one/');
+    await page.goto('/projects/extrack/');
     await expect(page.locator('[data-toc]')).toBeHidden();
   });
 });

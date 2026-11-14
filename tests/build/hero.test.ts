@@ -27,9 +27,10 @@ describe('Me section', () => {
     expect(gh.attr('rel')).toContain('noopener');
   });
 
-  it('falls back to a single-column layout without a photo', () => {
-    expect(me.attr('data-layout')).toBe('single');
-    expect(me.find('img').length).toBe(0);
+  it('uses the two-column layout with the photo', () => {
+    expect(me.attr('data-layout')).toBe('split');
+    expect(me.find('img').length).toBe(1);
+    expect(me.find('img').attr('alt')).toBe('Photo of John Rey B. Aranton');
   });
 
   it('lists every stack item with an icon', () => {

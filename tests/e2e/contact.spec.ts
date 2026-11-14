@@ -1,5 +1,10 @@
 import { test, expect, type Page } from '@playwright/test';
-import { site } from '../../src/site';
+
+/** The address the page publishes in its mailto link. (Importing the site config here would pull in the photo, which Playwright can't load.) */
+async function publishedEmail(page: Page): Promise<string> {
+  const href = await page.locator('#contact a[href^="mailto:"]').first().getAttribute('href');
+  return href!.replace(/^mailto:/, '');
+}
 
 async function fill(page: Page, email = 'recruiter@example.com') {
   await page.goto('/#contact');
@@ -36,7 +41,7 @@ test('keeps the message and shows the email address when sending fails', async (
   await page.getByRole('button', { name: /send/i }).click();
   const error = page.locator('[data-form-error]');
   await expect(error).toBeVisible();
-  await expect(error).toContainText(site.email);
+  await expect(error).toContainText(await publishedEmail(page));
   await expect(page.getByLabel('Message')).toHaveValue('We would like to talk about an internship.');
 });
 
@@ -75,7 +80,7 @@ test('copy email button copies the address @copy', async ({ page, context }) => 
   await page.goto('/#contact');
   await page.locator('[data-copy-email]').click();
   await expect(page.locator('[data-copy-email]')).toContainText('Copied');
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(site.email);
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(await publishedEmail(page));
 });
 
 test('posts to /thanks without JavaScript @nojs', async ({ page }) => {

@@ -14,7 +14,7 @@ const projects = defineCollection({
         year: z.number().int(),
         role: z.string().optional(),
         timeline: z.string().optional(),
-        type: z.enum(['capstone', 'school', 'personal', 'client']),
+        type: z.enum(['capstone', 'school', 'personal', 'client', 'startup']),
         stack: z.array(z.string()).min(1),
         liveUrl: z.string().url().optional(),
         repoUrl: z.string().url().optional(),
@@ -47,9 +47,10 @@ const achievements = defineCollection({
   schema: z.object({
     stats: z.array(z.object({ value: z.string(), label: z.string() })).max(4),
     certifications: z.array(
-      z.object({ name: z.string(), issuer: z.string(), year: z.number().int(), url: z.string().url().optional() }),
+      z.object({ name: z.string(), issuer: z.string().optional(), year: z.number().int(), url: z.string().url().optional() }),
     ),
-    awards: z.array(z.object({ name: z.string(), context: z.string().optional(), year: z.number().int() })),
+    // `year` is a number, or a short period such as "Since 2024".
+    awards: z.array(z.object({ name: z.string(), context: z.string().optional(), year: z.union([z.number().int(), z.string()]) })),
   }),
 });
 

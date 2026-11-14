@@ -1,6 +1,6 @@
-/** Newest `start` first. */
-export function sortJourney<T extends { data: { start: Date } }>(items: T[]): T[] {
-  return [...items].sort((a, b) => b.data.start.getTime() - a.data.start.getTime());
+/** Oldest `start` first, so the timeline reads in the order things happened. Same-month entries go by id. */
+export function sortJourney<T extends { id: string; data: { start: Date } }>(items: T[]): T[] {
+  return [...items].sort((a, b) => a.data.start.getTime() - b.data.start.getTime() || a.id.localeCompare(b.id));
 }
 
 const monthYear = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });

@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { loadPage } from './helpers';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 describe('base layout on /', () => {
   const $ = loadPage('/');
@@ -12,7 +14,7 @@ describe('base layout on /', () => {
 
   it('has SEO and social meta', () => {
     expect($('meta[name="description"]').attr('content')?.length).toBeGreaterThan(20);
-    expect($('link[rel="canonical"]').attr('href')).toMatch(/^https:\/\//);
+    expect($('link[rel="canonical"]').attr('href')).toBe('https://johnreyaranton.netlify.app/');
     expect($('meta[property="og:image"]').attr('content')).toMatch(/^https:\/\/.+\/og\.png$/);
     expect($('meta[name="twitter:card"]').attr('content')).toBe('summary_large_image');
   });
@@ -32,5 +34,13 @@ describe('base layout on /', () => {
 
   it('credits the stack in the footer', () => {
     expect($('footer').text()).toContain('Built with Astro');
+  });
+});
+
+describe('live address', () => {
+  it('points robots.txt at the real sitemap', () => {
+    const robots = readFileSync(join(process.cwd(), 'public', 'robots.txt'), 'utf8');
+    expect(robots).toContain('Sitemap: https://johnreyaranton.netlify.app/sitemap-index.xml');
+    expect(robots).not.toContain('yourname');
   });
 });

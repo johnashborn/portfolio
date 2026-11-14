@@ -42,14 +42,14 @@ const bothPanels = !!data && data.certifications.length > 0 && data.awards.lengt
         <div class:list={['grid gap-4 md:gap-5', bothPanels && 'md:grid-cols-2']}>
           {data.certifications.length > 0 && (
             <div data-reveal class="rounded-2xl border border-line bg-surface-1 p-5 md:p-6">
-              <h3 class="label-mono">Certifications</h3>
+              <h3 class="label-mono">Certifications &amp; training</h3>
               <ul data-certifications class="mt-2 divide-y divide-zinc-800/80">
                 {data.certifications.map((c) => (
                   <li class="flex items-center justify-between gap-4 py-3.5">
                     <div>
                       <p class="text-sm font-medium text-text-1">{c.name}</p>
                       <p class="mt-0.5 font-mono text-[11px] text-text-3">
-                        {c.issuer} · {c.year}
+                        {[c.issuer, c.year].filter(Boolean).join(' · ')}
                       </p>
                     </div>
                     {c.url && (
@@ -71,7 +71,7 @@ const bothPanels = !!data && data.certifications.length > 0 && data.awards.lengt
 
           {data.awards.length > 0 && (
             <div data-reveal class="rounded-2xl border border-line bg-surface-1 p-5 md:p-6">
-              <h3 class="label-mono">Awards &amp; hackathons</h3>
+              <h3 class="label-mono">Awards &amp; recognition</h3>
               <ul data-awards class="mt-2 divide-y divide-zinc-800/80">
                 {data.awards.map((a) => (
                   <li class="flex items-start justify-between gap-4 py-3.5">

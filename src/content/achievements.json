@@ -1,16 +1,51 @@
 {
   "main": {
     "stats": [
-      { "value": "8", "label": "projects built (TODO)" },
-      { "value": "2", "label": "certifications (TODO)" },
-      { "value": "1", "label": "hackathon (TODO)" }
+      {
+        "value": "7",
+        "label": "projects & prototypes"
+      },
+      {
+        "value": "Top 25",
+        "label": "of 253 entries, Philippine Startup Challenge"
+      },
+      {
+        "value": "1st",
+        "label": "place, BISU Balilihan Codeathon (Java, hard)"
+      }
     ],
     "certifications": [
-      { "name": "TODO: Certification name", "issuer": "Issuer", "year": 2025, "url": "https://example.com/verify" },
-      { "name": "TODO: Another certification", "issuer": "Issuer", "year": 2024, "url": "https://example.com/verify" }
+      {
+        "name": "Cybersecurity seminar",
+        "issuer": "Trend Micro",
+        "year": 2025
+      },
+      {
+        "name": "Campus Caravan startup seminar",
+        "issuer": "DICT",
+        "year": 2025
+      },
+      {
+        "name": "Leadership training",
+        "year": 2025
+      }
     ],
     "awards": [
-      { "name": "TODO: Hackathon or award", "context": "What you built or why you won", "year": 2025 }
+      {
+        "name": "Top 25, Philippine Startup Challenge",
+        "context": "With Lumnia, an app that brings a seller's data from Lazada, Shopee and other marketplaces into one place. Top 25 of 253 entries in Central Visayas.",
+        "year": 2026
+      },
+      {
+        "name": "1st Place, BISU Balilihan Codeathon",
+        "context": "Java, hard category",
+        "year": 2025
+      },
+      {
+        "name": "Dean's Lister",
+        "context": "Consistently on the Dean's List",
+        "year": "Since 2024"
+      }
     ]
   }
 }

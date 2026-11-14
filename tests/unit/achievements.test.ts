@@ -32,6 +32,14 @@ describe('parseStat', () => {
     expect(parseStat('#1')).toEqual({ num: 1, prefix: '#', suffix: '' });
   });
 
+  it('keeps a word prefix like "Top 25"', () => {
+    expect(parseStat('Top 25')).toEqual({ num: 25, prefix: 'Top ', suffix: '' });
+  });
+
+  it('keeps an ordinal suffix like "1st"', () => {
+    expect(parseStat('1st')).toEqual({ num: 1, prefix: '', suffix: 'st' });
+  });
+
   it('returns null when there is no number', () => {
     expect(parseStat('A+')).toBeNull();
   });
